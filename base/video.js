@@ -9,16 +9,16 @@ class Video {
       name: undefined,
       has: {
         searchVideos: true,
-        getVideoById: true,
-        getVideoEmbedCode: true,
-        getDeletedVideo: true,
+        fetchVideoById: true,
+        fetchVideoEmbedCode: true,
+        fetchDeletedVideo: true,
         isVideoActive: true,
-        getCategoriesList: true,
-        getTagsList: true,
-        getStarList: false,
-        getStarDetailedList: false,
-        getAmateurList: false,
-        getAmateurDetailedList: false
+        fetchCategoriesList: true,
+        fetchTagsList: true,
+        fetchStarList: false,
+        fetchStarDetailedList: false,
+        fetchAmateurList: false,
+        fetchAmateurDetailedList: false
       },
       urls: {
         logo: undefined,
@@ -34,6 +34,6 @@ class Video {
         this[property] = deepExtend (this[property], value);
     }
   }
-};
 
-const instance = new Video();
+
+};
