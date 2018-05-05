@@ -1,4 +1,8 @@
-module.exports = class Video {
+const functions = require("../functions");
+
+const { deepExtend } = functions; 
+
+class Video {
   describe() {
     return {
       id: undefined,
@@ -21,7 +25,15 @@ module.exports = class Video {
         api: undefined,
         www: undefined
       }
-    };
+    }
+  }
+
+  constructor() {
+    const config = this.describe();
+    for (const [property, value] of Object.entries (config)){
+        this[property] = deepExtend (this[property], value);
+    }
   }
 };
 
+const instance = new Video();
