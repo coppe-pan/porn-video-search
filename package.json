@@ -1,0 +1,10 @@
+{
+  "name": "porn-video-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "pornhub": "^0.0.5",
+    "request": "^2.85.0"
+  }
+}
