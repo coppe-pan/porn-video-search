@@ -12,7 +12,7 @@ class Pornhub extends Video {
       urls: {
         logo:
           "https://ci.phncdn.com/www-static/images/pornhub_logo_straight.png?cache=2018050410",
-        api: "https://www.pornhub.com/webmasters",
+        api: "https://www.pornhub.com/webmasters/",
         www: "https://jp.pornhub.com"
       },
       api: [
@@ -47,18 +47,14 @@ class Pornhub extends Video {
   }
 
   fetchVideos(params = {}) {
-    if (params !== null) {
-      let url = this.urls.api + '/search/'
-      Object.keys(params).forEach(key => {
-        url +=  `?${key}=${params[key]}`;
-      });
-    }
+    const videos = this.apiSearch(params);
+    
   }
+
+  fetchVideoById(id)  {
+    let url = this.urls.api + `/video_by_id/?id=${id}`
+  }
+
+  fetchVideoEmbedCode(id) {
+  }  
 }
-
-
-
-
-// const pornhub = new Pornhub()
-
-// pornhub.fetchVideos({search: 'japanese', category: 'japanese'});

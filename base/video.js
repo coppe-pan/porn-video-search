@@ -1,3 +1,5 @@
+const fetch= require("node-fetch");
+
 const functions = require("../functions");
 
 const { deepExtend, isObject, isDictionary } = functions;
@@ -45,9 +47,40 @@ module.exports = class Video {
     for (let i = 0; i < paths.length; i++) {
       let path = paths[i].trim()
       let splitPath = path.split("_")
-      let camelcaseMethod = 'api' + splitPath.map(path => this.capitalize(path)).join("")
+      let camelcaseMethod =
+        "api" + splitPath.map(path => this.capitalize(path)).join("")
       let partial = async params => this[methodName](path, params || {})
       this[camelcaseMethod] = partial
     }
+  }
+
+  request(path, params) {
+    let url = this.sign(path, params)
+    return fetch(url, { method: 'GET'})
+                    .catch (e => {
+                        throw e
+                    })
+                    .then (response => this.handleRestResponse (response, url))
+  }
+  
+  handleRestResponse(response, url, method = 'GET') {  
+    return response.text().then(responseBody => {
+       const json = JSON.parse(responseBody)
+       console.log(json);
+    })
+  }
+
+  sign(path, params) {
+    let url = this.urls.api
+    if(isDictionary(params)) {
+       url += path
+       Object.keys(params).forEach(key => {
+        const encodedParams = encodeURIComponent(params[key]); 
+        url +=  `?${key}=${encodedParams}`
+       });
+    } else {
+        url += `${path}?id=${params}`
+    }
+    return url
   }
 };
