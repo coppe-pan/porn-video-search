@@ -8,7 +8,7 @@ module.exports = class Video {
       id: undefined,
       name: undefined,
       has: {
-        searchVideos: true,
+        fetchVideos: true,
         fetchVideoById: true,
         fetchVideoEmbedCode: true,
         fetchDeletedVideo: true,
@@ -45,7 +45,7 @@ module.exports = class Video {
     for (let i = 0; i < paths.length; i++) {
       let path = paths[i].trim()
       let splitPath = path.split("_")
-      let camelcaseMethod =this.uncapitalize(splitPath.map(path => this.capitalize(path)).join(""))
+      let camelcaseMethod = 'api' + splitPath.map(path => this.capitalize(path)).join("")
       let partial = async params => this[methodName](path, params || {})
       this[camelcaseMethod] = partial
     }
