@@ -13,5 +13,7 @@ module.exports = {
       } else out = x;
     }
     return out;
-  }
+  },
+  capitalize: s => s.length ? (s.charAt (0).toUpperCase () + s.slice (1)) : s,
+  uncapitalize: s => s.length ? (s.charAt (0).toLowerCase () + s.slice (1)) : s
 };
