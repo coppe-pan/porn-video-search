@@ -1,5 +1,5 @@
 const isObject = o => o !== null && typeof o === "object",
-  isDictionary = o => isObject(o) && !Array.isArray(o);
+  isDictionary = o => isObject(o) && !Array.isArray(o)
 
 module.exports = {
   isObject,

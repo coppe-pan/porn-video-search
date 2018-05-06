@@ -47,6 +47,18 @@ class Pornhub extends Video {
   }
 
   fetchVideos(params = {}) {
-    if (params !== null) Object.entries(params);
+    if (params !== null) {
+      let url = this.urls.api + '/search/'
+      Object.keys(params).forEach(key => {
+        url +=  `?${key}=${params[key]}`;
+      });
+    }
   }
 }
+
+
+
+
+// const pornhub = new Pornhub()
+
+// pornhub.fetchVideos({search: 'japanese', category: 'japanese'});
