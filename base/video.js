@@ -42,7 +42,7 @@ module.exports = class Video {
     }
     this.defineRestApi(this.api, "request")
   }
-
+  
   defineRestApi(paths, methodName) {
     for (let i = 0; i < paths.length; i++) {
       let path = paths[i].trim()
@@ -64,6 +64,7 @@ module.exports = class Video {
   }
   
   handleRestResponse(response, url, method = 'GET') {  
+      console.log(url);
     return response.text().then(responseBody => {
        const json = JSON.parse(responseBody)
        console.log(json);

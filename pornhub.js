@@ -19,7 +19,7 @@ class Pornhub extends Video {
         "search",
         "video_by_id",
         "video_embed_code",
-        "deleted_video",
+        "deleted_videos",
         "is_video_active",
         "categories",
         "tags",
@@ -46,15 +46,43 @@ class Pornhub extends Video {
     });
   }
 
-  fetchVideos(params = {}) {
-    const videos = this.apiSearch(params);
-    
+  fetchVideos(params) {
+    const response = this.apiSearch(params)
   }
 
   fetchVideoById(id)  {
-    let url = this.urls.api + `/video_by_id/?id=${id}`
+    const response  = this.apiVideoById(id)
   }
 
   fetchVideoEmbedCode(id) {
+    const response = this.apiVideoEmbedCode(id)
   }  
+
+  fetchDeletedVideos(params) {
+    const response = this.apiDeletedVideos(params)
+  }
+
+  fetchTagsList(params) {
+    const response = this.apiTags(params)
+    const tags = []
+    Object.values(response.tags).forEach(tag => {
+        tags.concat(tag.tag.tag_name)
+    })
+    return tags
+  }
+
+  fetchStarList() {
+    const response = this.apiStars()
+  }
+
+  fetchStarDetailedList() {
+    const response = this.apiStarsDetailed() 
+  }
+
+  isVideoActive() {
+    const response = this.apiIsVideoActive()
+  }
 }
+
+const pornhub = new Pornhub()
+pornhub.fetchStarList()
