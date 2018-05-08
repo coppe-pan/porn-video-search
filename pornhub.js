@@ -85,4 +85,4 @@ class Pornhub extends Video {
 }
 
 const pornhub = new Pornhub()
-pornhub.fetchStarList()
+pornhub.fetchAmateurList()

@@ -4,6 +4,8 @@ const functions = require("../functions");
 
 const { deepExtend, isObject, isDictionary } = functions;
 
+const { NotSupported } = require("./errors")
+
 module.exports = class Video {
   describe() {
     return {
@@ -83,5 +85,13 @@ module.exports = class Video {
         url += `${path}?id=${params}`
     }
     return url
+  }
+
+  fetchAmateurList () {
+    throw new NotSupported (this.id + ' fetchAmateurList not supported yet');
+  }
+
+  fetchAmateurDetailedList () {
+    throw new NotSupported (this.id + ' fetchAmateurDetailedList not supported yet');
   }
 };
