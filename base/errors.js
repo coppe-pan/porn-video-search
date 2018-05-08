@@ -14,8 +14,6 @@ module.exports = subclass(
   }
 );
 
-/*  ------------------------------------------------------------------------ */
-
 function subclass(BaseClass, classes, namespace = {}) {
   for (const [$class, subclasses] of Object.entries(classes)) {
     const Class = Object.assign(namespace, {

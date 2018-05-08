@@ -66,10 +66,9 @@ module.exports = class Video {
   }
   
   handleRestResponse(response, url, method = 'GET') {  
-      console.log(url);
     return response.text().then(responseBody => {
        const json = JSON.parse(responseBody)
-       console.log(json);
+       return json
     })
   }
 
@@ -85,6 +84,14 @@ module.exports = class Video {
         url += `${path}?id=${params}`
     }
     return url
+  }
+
+  fetchStarList () {
+    throw new NotSupported (this.id + ' fetchAmateurList not supported yet');
+  }
+
+  fetchStarDetailedList () {
+    throw new NotSupported (this.id + ' fetchAmateurDetailedList not supported yet');
   }
 
   fetchAmateurList () {

@@ -46,24 +46,28 @@ class Pornhub extends Video {
     });
   }
 
-  fetchVideos(params) {
-    const response = this.apiSearch(params)
+  async fetchVideos(params) {
+    const response = await this.apiSearch(params)
+    return response
   }
 
-  fetchVideoById(id)  {
-    const response  = this.apiVideoById(id)
+  async fetchVideoById(id)  {
+    const response  = await this.apiVideoById(id)
+    return response
   }
 
-  fetchVideoEmbedCode(id) {
-    const response = this.apiVideoEmbedCode(id)
+  async fetchVideoEmbedCode(id) {
+    const response = await this.apiVideoEmbedCode(id)
+    return response 
   }  
 
-  fetchDeletedVideos(params) {
-    const response = this.apiDeletedVideos(params)
+  async fetchDeletedVideos(params) {
+    const response = await this.apiDeletedVideos(params)
+    return response
   }
 
-  fetchTagsList(params) {
-    const response = this.apiTags(params)
+  async fetchTagsList(params) {
+    const response = await this.apiTags(params)
     const tags = []
     Object.values(response.tags).forEach(tag => {
         tags.concat(tag.tag.tag_name)
@@ -71,18 +75,18 @@ class Pornhub extends Video {
     return tags
   }
 
-  fetchStarList() {
-    const response = this.apiStars()
+  async fetchStarList() {
+    const response = await this.apiStars()
+    return response
   }
 
-  fetchStarDetailedList() {
-    const response = this.apiStarsDetailed() 
+  async fetchStarDetailedList() {
+    const response = await this.apiStarsDetailed() 
+    return response
   }
 
-  isVideoActive() {
-    const response = this.apiIsVideoActive()
+  async isVideoActive() {
+    const response = await this.apiIsVideoActive()
+    return response
   }
 }
-
-const pornhub = new Pornhub()
-pornhub.fetchAmateurList()
