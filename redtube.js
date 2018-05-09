@@ -44,38 +44,4 @@ class Redtube extends Video {
       }
     });
   }
-
-  async fetchVideos(params) {
-    const response = await this.apiSearch(params)
-    return response
-  }
-
-  async fetchVideoById(id)  {
-    const response  = await this.apiVideoById(id)
-    return response
-  }
-
-  async fetchVideoEmbedCode(id) {
-    const response = await this.apiVideoEmbedCode(id)
-    return response 
-  }  
-
-  async fetchDeletedVideos(params) {
-    const response = await this.apiDeletedVideos(params)
-    return response
-  }
-
-  async fetchTagsList(params) {
-    const response = await this.apiTags(params)
-    const tags = []
-    Object.values(response.tags).forEach(tag => {
-        tags.concat(tag.tag.tag_name)
-    })
-    return tags
-  }
-
-  async isVideoActive() {
-    const response = await this.apiIsVideoActive()
-    return response
-  }
 }
