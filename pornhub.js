@@ -15,17 +15,25 @@ class Pornhub extends Video {
         api: "https://www.pornhub.com/webmasters/",
         www: "https://jp.pornhub.com"
       },
-      api: [
-        "search",
-        "video_by_id",
-        "video_embed_code",
-        "deleted_videos",
-        "is_video_active",
-        "categories",
-        "tags",
-        "stars",
-        "stars_detailed"
-      ],
+      api: {
+        videos: [
+          "search",
+          "video_by_id",
+          "video_embed_code",
+          "deleted_videos",
+          "is_video_active"
+        ],
+        categories: [
+          "categories"
+        ],
+        tags: [
+          "tags"
+        ],
+        stars: [
+          "stars",
+          "stars_detailed"
+        ]
+      },
       parameters: {
         search: [
           "category",
