@@ -1,14 +1,14 @@
 const Video = require("./base/video");
 
-class Redtube extends Video {
+class KeesMovies extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
-      id: "redtube",
-      name: "redtube",
+      id: "keezmovies",
+      name: "KeezMoovies",
       urls: {
-        logo: "https://thumbs-cdn.redtube.com/www-static/cdn_files/redtube/images/pc/logo/redtube_logo.png?v=f8b34a69302af5caf8e004aa03ddc83fd0641215",
-        api: "https://api.redtube.com/?data=redtube",
-        www: "https://www.redtube.com/"
+        logo: "https://tubeace.com/wp-content/themes/tubeace2sales/images/keezmovies-logo.png",      
+        api: "http://www.keezmovies.com/wapi/",
+        www: "https://www.keezmovies.com/"
       },
       api: {
         Videos: [
@@ -27,12 +27,14 @@ class Redtube extends Video {
       },
       parameters: {
         search: [
+          "output",
           "category",
           "page",
           "search",
-          "stars",
+          "star",
           "tags",
-          "period",
+          "query",
+          "ordering",
           "thumbsize"
         ],
         video_by_id: ["id", "thumbsize"],
