@@ -1,12 +1,12 @@
 const Video = require("./base/video");
 
-class SpankWrite extends Video {
+class SpankWire extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
-      id: "spankwrite",
-      name: "spankwrite",
+      id: "spankwire",
+      name: "spankwire",
       urls: {
-        logo: "https://thumbs-cdn.redtube.com/www-static/cdn_files/redtube/images/pc/logo/redtube_logo.png?v=f8b34a69302af5caf8e004aa03ddc83fd0641215",
+        logo: "https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1397196549/f7b5fa1c57cbf50fa8b28ed21f442283.gif",
         api: "http://www.spankwire.com/api/HubTrafficApiCall?data=",
         www: "https://www.spankwire.com/"
       },
