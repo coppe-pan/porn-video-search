@@ -1,10 +1,10 @@
 const Video = require("./base/video");
 
-class Pornhub extends Video {
+class YouPorn extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
-      id: "pornhub",
-      name: "Pornhub",
+      id: "youporn",
+      name: "YouPorn",
       has: {
         fetchStarList: true,
         fetchStarDetailedList: true
@@ -12,8 +12,8 @@ class Pornhub extends Video {
       urls: {
         logo:
           "https://ci.phncdn.com/www-static/images/pornhub_logo_straight.png?cache=2018050410",
-        api: "https://www.pornhub.com/webmasters/",
-        www: "https://jp.pornhub.com"
+        api: "https://www.youporn.com/api/webmasters/",
+        www: "https://www.youporn.com/"
       },
       api: [
           "search",
