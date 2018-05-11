@@ -77,7 +77,6 @@ module.exports = class Tube8 extends Video {
 
   async isVideoActive(params) {
     params = this.assignParams("isvideoactive", params);
-    console.log(params)
     const response = await this.apiIsVideoActive(params);
     return response;
   }
