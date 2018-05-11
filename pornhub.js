@@ -10,21 +10,20 @@ module.exports = class Pornhub extends Video {
         fetchStarDetailedList: true
       },
       urls: {
-        logo:
-          "https://ci.phncdn.com/www-static/images/pornhub_logo_straight.png?cache=2018050410",
+        logo: "https://ci.phncdn.com/www-static/images/pornhub_logo_straight.png?cache=2018050410",
         api: "https://www.pornhub.com/webmasters/",
-        www: "https://jp.pornhub.com"
+        www: "https://www.pornhub.com"
       },
       api: [
-          "search",
-          "video_by_id",
-          "video_embed_code",
-          "deleted_videos",
-          "is_video_active",
-          "categories",
-          "tags",
-          "stars",
-          "stars_detailed"
+        "search",
+        "video_by_id",
+        "video_embed_code",
+        "deleted_videos",
+        "is_video_active",
+        "categories",
+        "tags",
+        "stars",
+        "stars_detailed"
       ],
       parameters: {
         search: [
@@ -69,16 +68,14 @@ module.exports = class Pornhub extends Video {
 
   async fetchTagsList(params) {
     const response = await this.apiTags(params)
-    const tags = []
-    Object.values(response.tags).forEach(tag => {
-        tags.concat(tag.tag.tag_name)
-    })
+    const tags = this.dicToArray(response.tags)
     return tags
   }
 
   async fetchStarList() {
     const response = await this.apiStars()
-    return response
+    const stars = this.dicToArray(response.stars)
+    return stars
   }
 
   async fetchStarDetailedList() {

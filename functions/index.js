@@ -14,6 +14,21 @@ module.exports = {
     }
     return out;
   },
+  dicToArray: function dicToArray(o, out = []) {
+    Object.values(o).forEach(ele => {
+      if (isDictionary(ele)) {
+        dicToArray(ele, out)
+      } else if (Array.isArray(ele)) {
+        ele.forEach(e => {
+          out.push(e)
+        })
+      } else {
+        out.push(ele)
+      }
+    });
+    return out
+    }
+  ,
   capitalize: s => s.length ? (s.charAt (0).toUpperCase () + s.slice (1)) : s,
   uncapitalize: s => s.length ? (s.charAt (0).toLowerCase () + s.slice (1)) : s
 };
