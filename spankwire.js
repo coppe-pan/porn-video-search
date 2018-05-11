@@ -1,6 +1,6 @@
 const Video = require("./base/video");
 
-class SpankWire extends Video {
+module.exports = class SpankWire extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
       id: "spankwire",

@@ -1,6 +1,6 @@
 const Video = require("./base/video");
 
-class Xtube extends Video {
+module.exports = class Xtube extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
       id: "xtube",

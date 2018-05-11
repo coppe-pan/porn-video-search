@@ -1,6 +1,6 @@
 const Video = require("./base/video");
 
-class Pornhub extends Video {
+module.exports = class Pornhub extends Video {
   describe() {
     return this.deepExtend(super.describe(), {
       id: "pornhub",
