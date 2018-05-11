@@ -58,7 +58,7 @@ module.exports = class Video {
       this[camelcaseMethod] = partial
     }
   }
-  
+
   request(path, params) {
     let url = this.sign(path, params)
     console.log(url)
@@ -66,13 +66,13 @@ module.exports = class Video {
                     .catch (e => {
                         throw e
                     })
-                    .then (response => this.handleRestResponse (response, url))
+                    .then (response => this.handleRestResponse (response, url, params["output"]))
   }
   
-  handleRestResponse(response, url, method = 'GET') {  
-    return response.text().then(responseBody => {
-       const json = JSON.parse(responseBody)
-       return json
+  handleRestResponse(response, url, output, method = 'GET') {  
+    return response.text().then(responseBody => { 
+      const res = output === "xml" ? responseBody : JSON.parse(responseBody)
+       return res
     })
   }
 
