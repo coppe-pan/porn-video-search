@@ -11,6 +11,7 @@ module.exports = class Video {
     return {
       id: undefined,
       name: undefined,
+      rest: false,
       has: {
         fetchVideos: true,
         fetchVideoById: true,
@@ -42,22 +43,25 @@ module.exports = class Video {
     for (const [property, value] of Object.entries(config)) {
       this[property] = deepExtend(this[property], value)
     }
+
     this.defineRestApi(this.api, "request")
   }
   
   defineRestApi(paths, methodName) {
     for (let i = 0; i < paths.length; i++) {
-      let path = paths[i].trim()
+      let path = paths[i].trim();
       let splitPath = path.split("_")
       let camelcaseMethod =
         "api" + splitPath.map(path => this.capitalize(path)).join("")
-      let partial = async params => this[methodName](path, params || {})
+      let httpPath = this.rest ? path : ""
+      let partial = async params => this[methodName](httpPath, params || {})
       this[camelcaseMethod] = partial
     }
   }
-
+  
   request(path, params) {
     let url = this.sign(path, params)
+    console.log(url)
     return fetch(url, { method: 'GET'})
                     .catch (e => {
                         throw e
@@ -75,11 +79,12 @@ module.exports = class Video {
   sign(path, params) {
     let url = this.urls.api
     if(isDictionary(params)) {
-       url += path
-       Object.keys(params).forEach(key => {
-        const encodedParams = encodeURIComponent(params[key]); 
-        url +=  `?${key}=${encodedParams}`
-       });
+      url += path
+      let keys = Object.keys(params)
+      for(let i = 0; i < keys.length; i++) {
+        let key = keys[i]
+        url += i === 0 ? `?${key}=${params[key]}` : `&${key}=${params[key]}`
+      }
     } else {
         url += `${path}?id=${params}`
     }

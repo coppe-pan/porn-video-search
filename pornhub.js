@@ -5,6 +5,7 @@ module.exports = class Pornhub extends Video {
     return this.deepExtend(super.describe(), {
       id: "pornhub",
       name: "Pornhub",
+      rest: true,
       has: {
         fetchStarList: true,
         fetchStarDetailedList: true
