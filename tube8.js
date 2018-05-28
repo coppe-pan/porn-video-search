@@ -57,7 +57,6 @@ module.exports = class Tube8 extends Video {
 
   async fetchDeletedVideos(params) {
     params = Object.assign({ action: "getdeletedvideos", output: "json" }, params);
-    console.log(params)
     const response = await this.apiGetDeletedVideos(params);
     return response;
   }
@@ -65,8 +64,7 @@ module.exports = class Tube8 extends Video {
   async fetchTagsList(params) {
     params = Object.assign({ action: "gettaglist", output: "json" }, params);
     const response = await this.apiGetTagsList(params);
-    const tags = this.dicToArray(response);
-    return tags;
+    return response;
   }
 
   async fetchCategoriesList(params) {

@@ -5,6 +5,7 @@ module.exports = class YouPorn extends Video {
     return this.deepExtend(super.describe(), {
       id: "youporn",
       name: "YouPorn",
+      rest: true,
       has: {
         fetchStarList: true,
         fetchStarDetailedList: true
@@ -48,6 +49,7 @@ module.exports = class YouPorn extends Video {
   }
 
   async fetchVideos(params) {
+    params = Object.assign(params, {search: params["search"].join("+")})
     const response = await this.apiSearch(params)
     return response
   }

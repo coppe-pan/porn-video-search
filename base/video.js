@@ -60,7 +60,7 @@ module.exports = class Video {
   }
 
   request(path, params) {
-    let url = this.sign(path, params)
+    let url = encodeURI(this.sign(path, params))
     console.log(url)
     return fetch(url, { method: 'GET'})
                     .catch (e => {
